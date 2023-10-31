@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Intents"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Intents"
+            tools:ignore="RedundantLabel">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!--Creating our own intent filter to get the image as option when sharing something-->
+            <intent-filter>
+                <!--To send data-->
+                <action android:name="android.intent.action.SEND"/>
+                <!--To set default app-->
+                <action android:name="android.intent.action.DEFAULT"/>
+                <!--To get the input data, * used to accept all kind of images-->
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".SecondActivity" />
+    </application>
+<!--Queries made to open send text option -->
+    <queries>
+        <intent>
+
+            <action android:name="android.intent.action.SEND"/>
+            <data android:mimeType="text/plain"/>
+
+        </intent>
+    </queries>
+
+</manifest>
